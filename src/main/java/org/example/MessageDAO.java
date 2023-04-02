@@ -84,7 +84,33 @@ public class MessageDAO {
         }
     }
 
-    public static void updateMessageDB(Message mensaje){
+    public static void updateMessageDB(Message message){
+        Conexion db_connect = new Conexion();
 
+        try(Connection conexion = db_connect.get_connection()) {
+            PreparedStatement ps = null;
+
+            try {
+               String query = "UPDATE messages SET  message = ? WHERE id_message = ?";
+               ps = conexion.prepareStatement(query);
+               ps.setString(1, message.getMessage());
+               ps.setInt(2, message.getId_message());
+
+                int countRowsUpdated = ps.executeUpdate();
+
+                if(countRowsUpdated != 0){
+                    System.out.println("Message has been updated.");
+                }else{
+                    System.out.println("Message was not updated.");
+                }
+
+                ps.close();
+
+            }catch (SQLException e){
+                System.out.println(e);
+            }
+        }catch (SQLException e){
+            System.out.println(e);
+        }
     }
 }
