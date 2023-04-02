@@ -1,15 +1,42 @@
 package org.example;
 
-import java.sql.Connection;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
 
-        Conexion conexion = new Conexion();
+        Scanner sc = new Scanner(System.in);
 
-        try (Connection cnx = conexion.get_connection()) {
-        } catch (Exception e) {
-            System.out.println(e);
-        }
+        int option = 0;
+
+        do {
+            System.out.println("==================================");
+            System.out.println("Messages App");
+            System.out.println("2. List Messages");
+            System.out.println("3. Edit Messages");
+            System.out.println("4. Delete Messages");
+            System.out.println("5. Logout");
+
+            //read option selected
+            option = sc.nextInt();
+
+            switch (option) {
+                case 1:
+                    MessageService.createMessage();
+                    break;
+                case 2:
+                    MessageService.listMessage();
+                    break;
+                case 3:
+                    MessageService.deleteMessage();
+                    break;
+                case 4:
+                    MessageService.editMessage();
+                    break;
+                default:
+                    break;
+            }
+        } while (option != 5);
+
     }
 }
