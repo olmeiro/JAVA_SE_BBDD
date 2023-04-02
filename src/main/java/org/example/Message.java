@@ -2,48 +2,49 @@ package org.example;
 
 public class Message {
 
-    int id_mensaje;
-    String mensaje;
-    String autor_mensaje;
-    String fecha_mensaje;
+    private int id_message;
+    private String message;
+    private String author_menssage;
+    private String date_message;
 
     public Message() {}
 
-    public Message(String mensaje, String autor_mensaje, String fecha_mensaje) {
-        this.mensaje = mensaje;
-        this.autor_mensaje = autor_mensaje;
-        this.fecha_mensaje = fecha_mensaje;
+    public Message(int id_message, String message, String author_menssage, String date_message) {
+        this.id_message = id_message;
+        this.message = message;
+        this.author_menssage = author_menssage;
+        this.date_message = date_message;
     }
 
-    public int getId_mensaje() {
-        return id_mensaje;
+    public int getId_message() {
+        return id_message;
     }
 
-    public void setId_mensaje(int id_mensaje) {
-        this.id_mensaje = id_mensaje;
+    public void setId_message(int id_message) {
+        this.id_message = id_message;
     }
 
-    public String getMensaje() {
-        return mensaje;
+    public String getMessage() {
+        return message;
     }
 
-    public void setMensaje(String mensaje) {
-        this.mensaje = mensaje;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
-    public String getAutor_mensaje() {
-        return autor_mensaje;
+    public String getAuthor_menssage() {
+        return author_menssage;
     }
 
-    public void setAutor_mensaje(String autor_mensaje) {
-        this.autor_mensaje = autor_mensaje;
+    public void setAuthor_menssage(String author_menssage) {
+        this.author_menssage = author_menssage;
     }
 
-    public String getFecha_mensaje() {
-        return fecha_mensaje;
+    public String getDate_message() {
+        return date_message;
     }
 
-    public void setFecha_mensaje(String fecha_mensaje) {
-        this.fecha_mensaje = fecha_mensaje;
+    public void setDate_message(String date_message) {
+        this.date_message = date_message;
     }
 }
