@@ -1,9 +1,10 @@
 package org.example;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class MessageService {
-    public static void createMessage() {
+    public static void createMessage() throws SQLException {
         Scanner sc = new Scanner(System.in);
         System.out.println("Write your message");
         String message = sc.nextLine();

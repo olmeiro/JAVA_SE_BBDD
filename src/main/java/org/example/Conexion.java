@@ -5,14 +5,25 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Conexion {
-    public Connection get_connection() {
-        Connection conection = null;
+    //Instance:
+    private static Conexion instance;
 
-        try {
-            conection = DriverManager.getConnection("jdbc:mysql://localhost:3306/messages_app","root","");
-        }catch (SQLException e){
-            System.out.println(e);
-        }
-        return conection;
+    /**
+     *  Function to ge the instance of the class, if not, create a new one (Singleton pattern).
+     */
+    public static Conexion getInstance() {
+        if(instance == null) instance = new Conexion();
+        return instance;
+    }
+
+    /**
+    *   Function to generate the config connection to MySQL.
+     * @return MySQL connection.
+    */
+    public Connection getConnection() throws SQLException {
+        Connection connection = null;
+        connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/messages_app","root","");
+
+        return connection;
     }
 }

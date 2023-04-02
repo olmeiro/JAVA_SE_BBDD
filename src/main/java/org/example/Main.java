@@ -1,5 +1,6 @@
 package org.example;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class Main {
@@ -23,7 +24,11 @@ public class Main {
 
             switch (option) {
                 case 1:
-                    MessageService.createMessage();
+                    try {
+                        MessageService.createMessage();
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                    }
                     break;
                 case 2:
                     MessageService.listMessage();

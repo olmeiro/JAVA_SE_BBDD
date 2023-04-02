@@ -6,29 +6,33 @@ import java.sql.SQLException;
 
 public class MessageDAO {
 
-    public static  void createMessageDB (Message message) {
-        Conexion db_connect = new Conexion();
 
-        try(Connection conexion = db_connect.get_connection()){
-            //insert data
-            PreparedStatement ps = null;
-            try {
-                String query = "INSERT INTO messages (`message`, `author_message`) VALUES (?, ?)";
+    /**
+     * Function to get database connection.
+     * @return connection MySQL connection.
+     */
+public static Connection getConnection() throws SQLException {
+    Conexion dbConnection = Conexion.getInstance();
+    return dbConnection.getConnection();
+}
 
-                ps = conexion.prepareStatement(query);
+public static  void createMessageDB (Message message) throws SQLException {
+        //Get connection:
+        Connection connection = getConnection();
 
-                ps.setString(1, message.getMessage());
-                ps.setString(2, message.getAuthor_menssage());
-                ps.executeUpdate();
-                ps.close();
+        //prepare query:
+        PreparedStatement ps = null;
 
-                System.out.println("Message created.");
-            }catch (SQLException e){
-                System.out.println(e);
-            }
-        }catch(SQLException e){
-            System.out.println(e);
-        }
+        String query = "INSERT INTO messages (`message`, `author_message`) VALUES (?, ?)";
+
+        //Set params.
+        ps = connection.prepareStatement(query);
+        ps.setString(1, message.getMessage());
+        ps.setString(2, message.getAuthor_menssage());
+        ps.executeUpdate();
+        ps.close();
+
+        System.out.println("Message created.");
     }
 
     public static void  readMessageDB(){
