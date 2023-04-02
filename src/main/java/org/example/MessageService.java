@@ -1,5 +1,6 @@
 package org.example;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class MessageService {
@@ -20,11 +21,18 @@ public class MessageService {
     }
 
     public static void listMessage(){
-
+        MessageDAO.readMessageDB();
     }
 
     public static void deleteMessage(){
-
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Choose id message to delete it.");
+        int id_message = sc.nextInt();
+        try {
+            MessageDAO.deleteMessageDB(id_message);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public static void editMessage(){
