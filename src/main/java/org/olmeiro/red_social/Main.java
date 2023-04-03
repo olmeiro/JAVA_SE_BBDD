@@ -36,7 +36,11 @@ public class Main {
                     break;
                 case 2:
                     User result = UserService.login(sc);
+                    try{
                     if(result.getUserId() > 0){
+                        MenuSession.menuSession(result, sc);
+                    }}catch (Exception e){
+                        System.out.println("User not found!");
                         MenuSession.menuSession(result, sc);
                     }
                     break;

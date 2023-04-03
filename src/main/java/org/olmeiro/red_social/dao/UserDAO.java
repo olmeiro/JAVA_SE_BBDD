@@ -22,7 +22,7 @@ public class UserDAO {
         try(Connection conexion = dbConnection.get_connection()){
             PreparedStatement ps = null;
             try{
-                String query = "INSET INTO users (email, pw, full_name) values (?,?,?)";
+                String query = "INSERT INTO users (email, pw, full_name) values (?,?,?)";
                 ps = conexion.prepareStatement(query);
                 ps.setString(1, user.getEmail());
                 ps.setString(2, user.getPassword());
@@ -32,6 +32,7 @@ public class UserDAO {
                 System.out.println(createdUser);
             } catch (SQLException e) {
                 System.out.println(cantCreateUser);
+                System.out.println(e);
             }
         }catch (SQLException ex){
             System.out.println(ex);
@@ -50,11 +51,12 @@ public class UserDAO {
 
                 while(rs.next()){
                     System.out.println("\n[ID: " + rs.getString("id_user") + " | ");
-                    System.out.print("Correo: -"+rs.getString("correo")+" | ");
-                    System.out.print("Nombre: "+rs.getString("nombre_completo")+" ] ");
+                    System.out.print("Email: -"+rs.getString("email")+" | ");
+                    System.out.print("Nombre: "+rs.getString("full_name")+" ] ");
                 }
             }catch(SQLException ex){
                 System.out.println(cantListUsers);
+                System.out.println(ex);
             }
         }catch (SQLException ex){
             System.out.println(ex);
@@ -66,7 +68,7 @@ public class UserDAO {
         try (Connection conexion = dbConnection.get_connection()) {
             PreparedStatement ps=null;
             try {
-                String query="update usuarios set correo = ?, clave = ?, nombre_completo = ? where id_usuario = ?";
+                String query="update users set email = ?, pw = ?, full_name = ? where id_user = ?";
                 ps=conexion.prepareStatement(query);
                 ps.setString(1, user.getEmail());
                 ps.setString(2, user.getPassword());
@@ -88,11 +90,11 @@ public class UserDAO {
             PreparedStatement ps = null;
             ResultSet rs = null;
             try {
-                String query = "SELECT * from users WHERE email=? and pw=?";
+                String query = "SELECT * from users WHERE email = ? and pw = ?";
                 ps = conexion.prepareStatement(query);
                 ps.setString(1, user.getEmail());
                 ps.setString(2, user.getPassword());
-                rs = ps.executeQuery(query);
+                rs = ps.executeQuery();
                 User login = new User();
 
                 if (rs.next()) {
@@ -107,6 +109,7 @@ public class UserDAO {
                 return login;
             } catch (SQLException e) {
                 System.out.println(loginFailed);
+                System.out.println(e);
             }
         } catch (SQLException ex) {
             System.out.println(ex);

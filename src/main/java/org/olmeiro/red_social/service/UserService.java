@@ -7,15 +7,18 @@ import org.olmeiro.red_social.model.User;
 import java.util.Scanner;
 
 public class UserService {
+    static String fullNameMessage = "Enter your full name.";
     static String emailMessage = "Enter your email.";
     static String passwordMessage = "Enter your password";
-    static String fullNameMessage = "Enter your full name.";
 
     public static void createUser(Scanner sc){
-        System.out.println("Enter your fullname");
+        sc.nextLine();
+        System.out.println(fullNameMessage);
         String fullName = sc.nextLine();
+
         System.out.println(emailMessage);
         String email = sc.nextLine();
+
         System.out.println(passwordMessage);
         String password = sc.nextLine();
 
@@ -31,6 +34,7 @@ public class UserService {
     }
 
     public static void editUser(User user, Scanner sc){
+        sc.nextLine();
         System.out.println(fullNameMessage);
         String fullName = sc.nextLine();
         System.out.println(emailMessage);
@@ -57,6 +61,8 @@ public class UserService {
         return result;
     }
     private static String getMd5Hash(String password) {
+
         return DigestUtils.md5Hex(password);
+//        return password;
     }
 }

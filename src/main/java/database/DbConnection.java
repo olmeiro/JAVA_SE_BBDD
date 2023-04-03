@@ -16,9 +16,9 @@ public class DbConnection {
              ":" + dotenv.get("DATABASE_PORT") +
              "/" + dotenv.get("DATABASE_NAME") +
              "", dotenv.get("DATABASE_USER"), dotenv.get("DATABASE_PASSWORD"));
-            if(connection != null){
-                System.out.println("Conexión éxitosa.");
-            }
+//            if(connection != null){
+//                System.out.println("Conexión éxitosa.");
+//            }
         }catch (Exception e){
             System.out.println(e);
         }

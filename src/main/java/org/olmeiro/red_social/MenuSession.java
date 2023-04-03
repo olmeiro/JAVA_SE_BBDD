@@ -22,6 +22,7 @@ public class MenuSession {
         do{
             System.out.println(sessionMenuMessage);
             //Read user input
+            sc.nextLine();
             option = sc.nextInt();
 
             switch (option){

@@ -32,6 +32,7 @@ public class MessageDAO {
                 ps.close();
             }catch (SQLException e){
                 System.out.println(cantCreateMessage);
+                System.out.println(e);
             }
         }catch(SQLException ex){
             System.out.println(ex);
