@@ -4,15 +4,15 @@ public class Message {
 
     private int id_message;
     private String message;
-    private String author_menssage;
+    private String author_message;
     private String date_message;
 
     public Message() {}
 
-    public Message(int id_message, String message, String author_menssage, String date_message) {
+    public Message(int id_message, String message, String author_message, String date_message) {
         this.id_message = id_message;
         this.message = message;
-        this.author_menssage = author_menssage;
+        this.author_message = author_message;
         this.date_message = date_message;
     }
 
@@ -32,12 +32,12 @@ public class Message {
         this.message = message;
     }
 
-    public String getAuthor_menssage() {
-        return author_menssage;
+    public String getAuthor_message() {
+        return author_message;
     }
 
-    public void setAuthor_menssage(String author_menssage) {
-        this.author_menssage = author_menssage;
+    public void setAuthor_message(String author_menssage) {
+        this.author_message = author_menssage;
     }
 
     public String getDate_message() {

@@ -14,7 +14,7 @@ public class MessageService {
 
         Message registry = new Message();
         registry.setMessage(message);
-        registry.setAuthor_menssage(name);
+        registry.setAuthor_message(name);
 
         //send to DAO:
         MessageDAO.createMessageDB(registry);

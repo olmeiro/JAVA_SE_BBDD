@@ -19,7 +19,7 @@ public class MessageDAO {
                 ps = conexion.prepareStatement(query);
 
                 ps.setString(1, message.getMessage());
-                ps.setString(2, message.getAuthor_menssage());
+                ps.setString(2, message.getAuthor_message());
                 ps.executeUpdate();
                 ps.close();
 
