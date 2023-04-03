@@ -8,6 +8,7 @@ target/
 .idea/jarRepositories.xml
 .idea/compiler.xml
 .idea/libraries/
+.idea/workspace.xml
 *.iws
 *.iml
 *.ipr
@@ -36,3 +37,9 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+*.class
+src/main/java/com/santiago/red_social/.DS_Store
+src/.DS_Store
+.settings/
+.env
